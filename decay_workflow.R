@@ -17,14 +17,13 @@ cl.107 = one.phase.exp.decay(df.107,
 cl.99 = one.phase.exp.decay(df.99,
                     name = 'ZNF143-AID-ARF clone 99', unit.time = 'minutes')
 
+#GFP HA plot
 time.values = c(0:max(c(df.gfp$time, df.ha$time)))
-#time.one.half = round(log((0.5 - gfp[[yf]])/(gfp[[y0]] - gfp[[yf]]))/-gfp[[alpha]], 1)
 
 pdf("Figure3E.pdf", width=5, height=4)
-#par(pty="s")
 
 plot(
-    frac~time, df.gfp, xlim = c(0,max(c(df.gfp$time, df.ha$time))), ylim = c(0,1), ylab = 'ZNF143 intensity', col = '#20B2AA',
+    frac~time, df.gfp, xlim = c(0,max(c(df.gfp$time, df.ha$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
     xlab = 'Time after auxin treatment (minutes)'
 )
 points(
@@ -40,12 +39,47 @@ lines(
 )
 text(
     max(c(df.gfp$time, df.ha$time))*0.3, 0.9,
-    bquote(bold('HA-ARF-P2A-TIR1 (t'[1/2]~' = '~.(round(log((0.5 - ha[[2]])/(ha[[1]] - ha[[2]]))/-ha[[3]], 1))~')')),
+    bquote(bold('HA-ARF-P2A-TIR1 (t'[1/2]~' = '~.(round(log((0.5 - ha[[2]])/(ha[[1]] - ha[[2]]))/-ha[[3]], 1))*')')),
     col = '#D00000', font = 2, cex = 0.9, pos = 4
 )
 text(
     max(c(df.gfp$time, df.ha$time))*0.3, 0.8,
-    bquote(bold('GFP-ARF-P2A-TIR1 (t'[1/2]~' = '~.(round(log((0.5 - gfp[[2]])/(gfp[[1]] - gfp[[2]]))/-gfp[[3]], 1))~')')),
+    bquote(bold('GFP-ARF-P2A-TIR1 (t'[1/2]~' = '~.(round(log((0.5 - gfp[[2]])/(gfp[[1]] - gfp[[2]]))/-gfp[[3]], 1))*')')),
+    col = '#20B2AA', font = 2, cex = 0.9, pos = 4
+)
+
+dev.off()
+
+#
+#ARF-AID clamp plot
+
+time.values = c(0:max(c(df.107$time, df.99$time)))
+
+pdf("Figure8D.pdf", width=5, height=4)
+
+plot(
+    frac~time, df.107, xlim = c(0,max(c(df.107$time, df.99$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
+    xlab = 'Time after auxin treatment (minutes)'
+)
+points(
+    frac~time, df.99, col = '#D00000'
+)
+lines(
+    time.values, cl.107[[2]] + (cl.107[[1]] - cl.107[[2]]) * exp(-cl.107[[3]] * time.values),
+      col='#20B2AA', lwd = 4
+)
+lines(
+    time.values, cl.99[[2]] + (cl.99[[1]] - cl.99[[2]]) * exp(-cl.99[[3]] * time.values),
+      col='#D00000', lwd = 4
+)
+text(
+    max(c(df.107$time, df.99$time))*0.5, 0.9,
+    bquote(bold('Clone 99 (t'[1/2]~' = '~.(round(log((0.5 - cl.99[[2]])/(cl.99[[1]] - cl.99[[2]]))/-cl.99[[3]], 1))*')')),
+    col = '#D00000', font = 2, cex = 0.9, pos = 4
+)
+text(
+    max(c(df.107$time, df.99$time))*0.5, 0.8,
+    bquote(bold('Clone 107 (t'[1/2]~' = '~.(round(log((0.5 - cl.107[[2]])/(cl.107[[1]] - cl.107[[2]]))/-cl.107[[3]], 1))*')')),
     col = '#20B2AA', font = 2, cex = 0.9, pos = 4
 )
 
