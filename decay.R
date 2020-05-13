@@ -9,7 +9,7 @@ one.phase.exp.decay <- function(df, name = 'Rplot', unit.time = 'minutes') {
     time.values = c(0:max(df$time))
 #    model.df = cbind(time.values, yf + (y0 - yf) * exp(-alpha * time.values))
     time.one.half = round(log((0.5 - yf)/(y0 - yf))/-alpha, 1)
-    pdf(paste(name,'.pdf', sep=''), width=4, height=4)
+    pdf(paste(name,'.pdf', sep=''), width=4, height=4, useDingbats=FALSE)
     par(pty="s")
     plot(frac~time, df, ylim = c(0,1), ylab = 'Fraction', xlab = paste0('Time (', unit.time, ')'))
     lines(time.values, yf + (y0 - yf) * exp(-alpha * time.values), col='red')

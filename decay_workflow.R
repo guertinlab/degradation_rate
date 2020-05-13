@@ -20,7 +20,7 @@ cl.99 = one.phase.exp.decay(df.99,
 #GFP HA plot
 time.values = c(0:max(c(df.gfp$time, df.ha$time)))
 
-pdf("Figure3E.pdf", width=5, height=4)
+pdf("Figure3E.pdf", width=5, height=4, useDingbats=FALSE)
 
 plot(
     frac~time, df.gfp, xlim = c(0,max(c(df.gfp$time, df.ha$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
@@ -55,7 +55,7 @@ dev.off()
 
 time.values = c(0:max(c(df.107$time, df.99$time)))
 
-pdf("Figure8D.pdf", width=5, height=4)
+pdf("Figure8D.pdf", width=5, height=4, useDingbats=FALSE)
 
 plot(
     frac~time, df.107, xlim = c(0,max(c(df.107$time, df.99$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
