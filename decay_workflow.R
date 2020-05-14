@@ -23,7 +23,7 @@ time.values = c(0:max(c(df.gfp$time, df.ha$time)))
 pdf("Figure3E.pdf", width=5, height=4, useDingbats=FALSE)
 
 plot(
-    frac~time, df.gfp, xlim = c(0,max(c(df.gfp$time, df.ha$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
+    frac~time, df.gfp, xlim = c(0,max(c(df.gfp$time, df.ha$time))), ylim = c(0,1), xaxs = "i", yaxs = "i", ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
     xlab = 'Time after auxin treatment (minutes)'
 )
 points(
@@ -58,7 +58,7 @@ time.values = c(0:max(c(df.107$time, df.99$time)))
 pdf("Figure8D.pdf", width=5, height=4, useDingbats=FALSE)
 
 plot(
-    frac~time, df.107, xlim = c(0,max(c(df.107$time, df.99$time))), ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
+    frac~time, df.107, xlim = c(0,max(c(df.107$time, df.99$time))), xaxs = "i", yaxs = "i", ylim = c(0,1), ylab = 'Normalized ZNF143 intensity', col = '#20B2AA',
     xlab = 'Time after auxin treatment (minutes)'
 )
 points(
